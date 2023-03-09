@@ -30,7 +30,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Store Resulting Benchmarks
-              uses: rhysd/github-action-benchmark@v1
+            - uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
@@ -43,7 +43,7 @@ jobs:
                   alert-comment-cc-users: "@steviegt6"
 
             - name: Publish Resulting Benchmarks
-              uses: rhysd/github-action-benchmark@v1
+            - uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
