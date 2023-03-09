@@ -3,39 +3,44 @@ using System.Runtime.CompilerServices;
 using BenchmarkDotNet.Attributes;
 using FnaVector2 = FNA::Microsoft.Xna.Framework.Vector2;
 using SysVector2 = System.Numerics.Vector2;
-using static FIARA.Benchmarks.Substitutions.Vector2Config;
 
 namespace FIARA.Benchmarks.Substitutions;
 
-public static class Vector2Config {
-    public const int VECTOR_COUNT = 1000;
-}
-
 public class Vector2ConstructorBenchmark {
-    private readonly FnaVector2[] fnaVectors = new FnaVector2[VECTOR_COUNT];
-    private readonly SysVector2[] sysVectors = new SysVector2[VECTOR_COUNT];
+    [Params(100, 1_000, 100_000, 1_000_000)]
+    // ReSharper disable once UnassignedField.Global
+    public int N;
+
+    private FnaVector2[] fnaVectors = null!;
+    private SysVector2[] sysVectors = null!;
+
+    [GlobalSetup]
+    public void Setup() {
+        fnaVectors = new FnaVector2[N];
+        sysVectors = new SysVector2[N];
+    }
 
     [Benchmark]
     public void FnaVector2ConstructorInt32MultiCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             fnaVectors[i] = new FnaVector2(i, i);
     }
 
     [Benchmark]
     public void SysVector2ConstructorInt32MultiCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             sysVectors[i] = new SysVector2(i, i);
     }
 
     [Benchmark]
     public void FnaVector2ConstructorInt32SingleCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             fnaVectors[i] = new FnaVector2(i);
     }
 
     [Benchmark]
     public void SysVector2ConstructorInt32SingleCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var f = (float) i;
             sysVectors[i] = new SysVector2(f);
         }
@@ -43,7 +48,7 @@ public class Vector2ConstructorBenchmark {
 
     [Benchmark]
     public void FnaVector2ConstructorSingleMultiCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var f = (float) i;
             fnaVectors[i] = new FnaVector2(f, f);
         }
@@ -51,7 +56,7 @@ public class Vector2ConstructorBenchmark {
 
     [Benchmark]
     public void SysVector2ConstructorSingleMultiCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var f = (float) i;
             sysVectors[i] = new SysVector2(f, f);
         }
@@ -59,7 +64,7 @@ public class Vector2ConstructorBenchmark {
 
     [Benchmark]
     public void FnaVector2ConstructorSingleSingleCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var f = (float) i;
             fnaVectors[i] = new FnaVector2(f);
         }
@@ -67,7 +72,7 @@ public class Vector2ConstructorBenchmark {
 
     [Benchmark]
     public void SysVector2ConstructorSingleSingleCtor() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var f = (float) i;
             sysVectors[i] = new SysVector2(f);
         }
@@ -75,12 +80,19 @@ public class Vector2ConstructorBenchmark {
 }
 
 public class Vector2AddBenchmark {
-    private readonly FnaVector2[] fnaVectors = new FnaVector2[VECTOR_COUNT];
-    private readonly SysVector2[] sysVectors = new SysVector2[VECTOR_COUNT];
+    [Params(100, 1_000, 100_000, 1_000_000)]
+    // ReSharper disable once UnassignedField.Global
+    public int N;
+
+    private FnaVector2[] fnaVectors = null!;
+    private SysVector2[] sysVectors = null!;
 
     [GlobalSetup]
     public void Setup() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        fnaVectors = new FnaVector2[N];
+        sysVectors = new SysVector2[N];
+
+        for (var i = 0; i < N; i++) {
             fnaVectors[i] = new FnaVector2(i, i);
             sysVectors[i] = new SysVector2(i, i);
         }
@@ -98,19 +110,19 @@ public class Vector2AddBenchmark {
 
     [Benchmark]
     public void FnaVector2Add() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             fnaVectors[i] += fnaVectors[i];
     }
 
     [Benchmark]
     public void SysVector2Add() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             sysVectors[i] += sysVectors[i];
     }
 
     [Benchmark]
     public void FnaVector2AddNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = fnaVectors[i];
             fnaVectors[i] = FnaAddNoInline(vec, vec);
         }
@@ -118,7 +130,7 @@ public class Vector2AddBenchmark {
 
     [Benchmark]
     public void SysVector2AddNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = sysVectors[i];
             sysVectors[i] = SysAddNoInline(vec, vec);
         }
@@ -126,12 +138,19 @@ public class Vector2AddBenchmark {
 }
 
 public class Vector2SubtractBenchmark {
-    private readonly FnaVector2[] fnaVectors = new FnaVector2[VECTOR_COUNT];
-    private readonly SysVector2[] sysVectors = new SysVector2[VECTOR_COUNT];
+    [Params(100, 1_000, 100_000, 1_000_000)]
+    // ReSharper disable once UnassignedField.Global
+    public int N;
+
+    private FnaVector2[] fnaVectors = null!;
+    private SysVector2[] sysVectors = null!;
 
     [GlobalSetup]
     public void Setup() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        fnaVectors = new FnaVector2[N];
+        sysVectors = new SysVector2[N];
+
+        for (var i = 0; i < N; i++) {
             fnaVectors[i] = new FnaVector2(i, i);
             sysVectors[i] = new SysVector2(i, i);
         }
@@ -149,19 +168,19 @@ public class Vector2SubtractBenchmark {
 
     [Benchmark]
     public void FnaVector2Subtract() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             fnaVectors[i] -= fnaVectors[i];
     }
 
     [Benchmark]
     public void SysVector2Subtract() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             sysVectors[i] -= sysVectors[i];
     }
 
     [Benchmark]
     public void FnaVector2SubtractNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = fnaVectors[i];
             fnaVectors[i] = FnaSubtractNoInline(vec, vec);
         }
@@ -169,7 +188,7 @@ public class Vector2SubtractBenchmark {
 
     [Benchmark]
     public void SysVector2SubtractNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = sysVectors[i];
             sysVectors[i] = SysSubtractNoInline(vec, vec);
         }
@@ -177,12 +196,19 @@ public class Vector2SubtractBenchmark {
 }
 
 public class Vector2MultiplyBenchmark {
-    private readonly FnaVector2[] fnaVectors = new FnaVector2[VECTOR_COUNT];
-    private readonly SysVector2[] sysVectors = new SysVector2[VECTOR_COUNT];
+    [Params(100, 1_000, 100_000, 1_000_000)]
+    // ReSharper disable once UnassignedField.Global
+    public int N;
+
+    private FnaVector2[] fnaVectors = null!;
+    private SysVector2[] sysVectors = null!;
 
     [GlobalSetup]
     public void Setup() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        fnaVectors = new FnaVector2[N];
+        sysVectors = new SysVector2[N];
+
+        for (var i = 0; i < N; i++) {
             fnaVectors[i] = new FnaVector2(i, i);
             sysVectors[i] = new SysVector2(i, i);
         }
@@ -200,19 +226,19 @@ public class Vector2MultiplyBenchmark {
 
     [Benchmark]
     public void FnaVector2Multiply() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             fnaVectors[i] *= fnaVectors[i];
     }
 
     [Benchmark]
     public void SysVector2Multiply() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             sysVectors[i] *= sysVectors[i];
     }
 
     [Benchmark]
     public void FnaVector2MultiplyNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = fnaVectors[i];
             fnaVectors[i] = FnaMultiplyNoInline(vec, vec);
         }
@@ -220,7 +246,7 @@ public class Vector2MultiplyBenchmark {
 
     [Benchmark]
     public void SysVector2MultiplyNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = sysVectors[i];
             sysVectors[i] = SysMultiplyNoInline(vec, vec);
         }
@@ -228,12 +254,19 @@ public class Vector2MultiplyBenchmark {
 }
 
 public class Vector2DivideBenchmark {
-    private readonly FnaVector2[] fnaVectors = new FnaVector2[VECTOR_COUNT];
-    private readonly SysVector2[] sysVectors = new SysVector2[VECTOR_COUNT];
+    [Params(100, 1_000, 100_000, 1_000_000)]
+    // ReSharper disable once UnassignedField.Global
+    public int N;
+
+    private FnaVector2[] fnaVectors = null!;
+    private SysVector2[] sysVectors = null!;
 
     [GlobalSetup]
     public void Setup() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        fnaVectors = new FnaVector2[N];
+        sysVectors = new SysVector2[N];
+
+        for (var i = 0; i < N; i++) {
             fnaVectors[i] = new FnaVector2(i, i);
             sysVectors[i] = new SysVector2(i, i);
         }
@@ -251,19 +284,19 @@ public class Vector2DivideBenchmark {
 
     [Benchmark]
     public void FnaVector2Divide() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             fnaVectors[i] /= fnaVectors[i];
     }
 
     [Benchmark]
     public void SysVector2Divide() {
-        for (var i = 0; i < VECTOR_COUNT; i++)
+        for (var i = 0; i < N; i++)
             sysVectors[i] /= sysVectors[i];
     }
 
     [Benchmark]
     public void FnaVector2DivideNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = fnaVectors[i];
             fnaVectors[i] = FnaDivideNoInline(vec, vec);
         }
@@ -271,7 +304,7 @@ public class Vector2DivideBenchmark {
 
     [Benchmark]
     public void SysVector2DivideNoInline() {
-        for (var i = 0; i < VECTOR_COUNT; i++) {
+        for (var i = 0; i < N; i++) {
             var vec = sysVectors[i];
             sysVectors[i] = SysDivideNoInline(vec, vec);
         }
