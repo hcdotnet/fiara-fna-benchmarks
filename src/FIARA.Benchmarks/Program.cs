@@ -13,7 +13,7 @@ namespace FIARA.Benchmarks;
 [JsonExporterAttribute.FullCompressed]
 [DisassemblyDiagnoser]
 internal static class Program {
-    private static readonly List<string> benchmarks = new();
+    private static readonly List<string> resulting_benchmarks = new();
 
     public static void Main(string[] args) {
         // BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
@@ -37,7 +37,7 @@ internal static class Program {
 
     // https://github.com/benchmark-action/github-action-benchmark/issues/69#issuecomment-1279644127
     private static void CombineBenchmarkResults(string name) {
-        Program.benchmarks.Add(name);
+        resulting_benchmarks.Add(name);
 
         var resultsFile = $"{name}.Combined";
         var searchPattern = $"{name}-report-full-compressed.json";
@@ -145,7 +145,7 @@ jobs:
         var sb = new StringBuilder(file);
         sb.AppendLine();
 
-        foreach (var benchmark in benchmarks) {
+        foreach (var benchmark in resulting_benchmarks) {
             sb.AppendLine(storeResulting(benchmark));
             sb.AppendLine(publishResulting(benchmark));
         }

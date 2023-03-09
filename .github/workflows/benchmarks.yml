@@ -23,12 +23,12 @@ jobs:
 #            - name: Run Benchmarks
 #              run: cd src && dotnet run -c "Release" --project "FIARA.Benchmarks/FIARA.Benchmarks.csproj" --framework "net7.0" --filter "*" --exporters "json"
 
-            - name: Store Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark)
+            - name: Store Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark)
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
@@ -36,39 +36,12 @@ jobs:
                   fail-on-alert: true
                   alert-comment-cc-users: "@steviegt6"
 
-            - name: Publish Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark)
+            - name: Publish Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark)
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark-report-full-compressed.json
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  auto-push: true
-                  alert-threshold: "200%"
-                  comment-on-alert: true
-                  fail-on-alert: true
-                  alert-comment-cc-users: "@steviegt6"
-                  gh-repository: "github.com/hcdotnet/fiara-fna-benchmarks"
-
-            - name: Store Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2AddBenchmark)
-              uses: rhysd/github-action-benchmark@v1
-              with:
-                  name: Benchmark.NET Benchmark
-                  tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2AddBenchmark-report-full-compressed.json
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  auto-push: true
-                  alert-threshold: "200%"
-                  comment-on-alert: true
-                  fail-on-alert: true
-                  alert-comment-cc-users: "@steviegt6"
-
-            - name: Publish Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2AddBenchmark)
-              uses: rhysd/github-action-benchmark@v1
-              with:
-                  name: Benchmark.NET Benchmark
-                  tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2AddBenchmark-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2ConstructorBenchmark-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
@@ -77,12 +50,12 @@ jobs:
                   alert-comment-cc-users: "@steviegt6"
                   gh-repository: "github.com/hcdotnet/fiara-fna-benchmarks"
 
-            - name: Store Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark)
+            - name: Store Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2AddBenchmark)
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2AddBenchmark-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
@@ -90,39 +63,12 @@ jobs:
                   fail-on-alert: true
                   alert-comment-cc-users: "@steviegt6"
 
-            - name: Publish Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark)
+            - name: Publish Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2AddBenchmark)
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark-report-full-compressed.json
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  auto-push: true
-                  alert-threshold: "200%"
-                  comment-on-alert: true
-                  fail-on-alert: true
-                  alert-comment-cc-users: "@steviegt6"
-                  gh-repository: "github.com/hcdotnet/fiara-fna-benchmarks"
-
-            - name: Store Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark)
-              uses: rhysd/github-action-benchmark@v1
-              with:
-                  name: Benchmark.NET Benchmark
-                  tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark-report-full-compressed.json
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  auto-push: true
-                  alert-threshold: "200%"
-                  comment-on-alert: true
-                  fail-on-alert: true
-                  alert-comment-cc-users: "@steviegt6"
-
-            - name: Publish Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark)
-              uses: rhysd/github-action-benchmark@v1
-              with:
-                  name: Benchmark.NET Benchmark
-                  tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2AddBenchmark-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
@@ -131,12 +77,12 @@ jobs:
                   alert-comment-cc-users: "@steviegt6"
                   gh-repository: "github.com/hcdotnet/fiara-fna-benchmarks"
 
-            - name: Store Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark)
+            - name: Store Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark)
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
@@ -144,12 +90,66 @@ jobs:
                   fail-on-alert: true
                   alert-comment-cc-users: "@steviegt6"
 
-            - name: Publish Resulting Benchmarks ($FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark)
+            - name: Publish Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark)
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/$FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2SubtractBenchmark-report-full-compressed.json
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  auto-push: true
+                  alert-threshold: "200%"
+                  comment-on-alert: true
+                  fail-on-alert: true
+                  alert-comment-cc-users: "@steviegt6"
+                  gh-repository: "github.com/hcdotnet/fiara-fna-benchmarks"
+
+            - name: Store Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark)
+              uses: rhysd/github-action-benchmark@v1
+              with:
+                  name: Benchmark.NET Benchmark
+                  tool: "benchmarkdotnet"
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark-report-full-compressed.json
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  auto-push: true
+                  alert-threshold: "200%"
+                  comment-on-alert: true
+                  fail-on-alert: true
+                  alert-comment-cc-users: "@steviegt6"
+
+            - name: Publish Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark)
+              uses: rhysd/github-action-benchmark@v1
+              with:
+                  name: Benchmark.NET Benchmark
+                  tool: "benchmarkdotnet"
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2MultiplyBenchmark-report-full-compressed.json
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  auto-push: true
+                  alert-threshold: "200%"
+                  comment-on-alert: true
+                  fail-on-alert: true
+                  alert-comment-cc-users: "@steviegt6"
+                  gh-repository: "github.com/hcdotnet/fiara-fna-benchmarks"
+
+            - name: Store Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark)
+              uses: rhysd/github-action-benchmark@v1
+              with:
+                  name: Benchmark.NET Benchmark
+                  tool: "benchmarkdotnet"
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark-report-full-compressed.json
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  auto-push: true
+                  alert-threshold: "200%"
+                  comment-on-alert: true
+                  fail-on-alert: true
+                  alert-comment-cc-users: "@steviegt6"
+
+            - name: Publish Resulting Benchmarks (FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark)
+              uses: rhysd/github-action-benchmark@v1
+              with:
+                  name: Benchmark.NET Benchmark
+                  tool: "benchmarkdotnet"
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks.Substitutions.Vector2DivideBenchmark-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
