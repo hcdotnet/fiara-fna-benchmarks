@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1678338091611,
+  "lastUpdate": 1678338093582,
   "repoUrl": "https://github.com/hcdotnet/fiara-fna-benchmarks",
   "entries": {
     "Benchmark.NET Benchmark": [
@@ -144,6 +144,54 @@ window.BENCHMARK_DATA = {
             "value": 457.0040559768677,
             "unit": "ns",
             "range": "± 2.069029562256593"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "xxlennygamerxx@gmail.com",
+            "name": "Tomat",
+            "username": "steviegt6"
+          },
+          "committer": {
+            "email": "xxlennygamerxx@gmail.com",
+            "name": "Tomat",
+            "username": "steviegt6"
+          },
+          "distinct": true,
+          "id": "33fd45d4155f4c8375b30d2829e29541db059c61",
+          "message": "oh my god I forgor to run it",
+          "timestamp": "2023-03-08T20:54:00-08:00",
+          "tree_id": "933078d0eb4c3dbcc017c2ea7a93544ee22a4bcb",
+          "url": "https://github.com/hcdotnet/fiara-fna-benchmarks/commit/33fd45d4155f4c8375b30d2829e29541db059c61"
+        },
+        "date": 1678338092743,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "FIARA.Benchmarks.Substitutions.Vector2AddBenchmark.FnaVector2Add",
+            "value": 4438.626047770183,
+            "unit": "ns",
+            "range": "± 45.20199662041058"
+          },
+          {
+            "name": "FIARA.Benchmarks.Substitutions.Vector2AddBenchmark.SysVector2Add",
+            "value": 511.2933431352888,
+            "unit": "ns",
+            "range": "± 4.2063532189517385"
+          },
+          {
+            "name": "FIARA.Benchmarks.Substitutions.Vector2AddBenchmark.FnaVector2AddNoInline",
+            "value": 11325.1242574056,
+            "unit": "ns",
+            "range": "± 112.88612719114379"
+          },
+          {
+            "name": "FIARA.Benchmarks.Substitutions.Vector2AddBenchmark.SysVector2AddNoInline",
+            "value": 1372.5196838378906,
+            "unit": "ns",
+            "range": "± 17.913197077305544"
           }
         ]
       }
