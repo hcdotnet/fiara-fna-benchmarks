@@ -18,19 +18,21 @@ internal static class Program {
     public static void Main(string[] args) {
         // BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
 
-        void combineFiaraResults(string name) {
-            CombineBenchmarkResults("FIARA.Benchmarks." + name);
-        }
+        //void combineFiaraResults(string name) {
+        //    CombineBenchmarkResults("FIARA.Benchmarks." + name);
+        //}
 
-        void combineSubstitutionsResults(string name) {
-            combineFiaraResults("Substitutions." + name);
-        }
+        //void combineSubstitutionsResults(string name) {
+        //    combineFiaraResults("Substitutions." + name);
+        //}
 
-        combineSubstitutionsResults("Vector2ConstructorBenchmark");
-        combineSubstitutionsResults("Vector2AddBenchmark");
-        combineSubstitutionsResults("Vector2SubtractBenchmark");
-        combineSubstitutionsResults("Vector2MultiplyBenchmark");
-        combineSubstitutionsResults("Vector2DivideBenchmark");
+        //combineSubstitutionsResults("Vector2ConstructorBenchmark");
+        //combineSubstitutionsResults("Vector2AddBenchmark");
+        //combineSubstitutionsResults("Vector2SubtractBenchmark");
+        //combineSubstitutionsResults("Vector2MultiplyBenchmark");
+        //combineSubstitutionsResults("Vector2DivideBenchmark");
+        
+        CombineBenchmarkResults("FIARA.Benchmarks");
         
         WriteActionsFile();
     }
@@ -40,7 +42,7 @@ internal static class Program {
         resulting_benchmarks.Add(name);
 
         var resultsFile = $"{name}.Combined";
-        var searchPattern = $"{name}-report-full-compressed.json";
+        var searchPattern = $"*-report-full-compressed.json";
         var resultsDir = Path.Combine("BenchmarkDotNet.Artifacts", "results");
         var resultsPath = Path.Combine(resultsDir, resultsFile + ".json");
 
@@ -114,7 +116,7 @@ jobs:
               with:
                   name: Benchmark.NET Benchmark
                   tool: ""benchmarkdotnet""
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/{name}-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/{name}.Combined.json
                   github-token: ${{{{ secrets.GITHUB_TOKEN }}}}
                   auto-push: true
                   alert-threshold: ""200%""
