@@ -1,3 +1,6 @@
 [submodule "src/FIARA"]
 	path = src/FIARA
 	url = https://github.com/hcdotnet/fiara
+[submodule "src/FNA"]
+	path = src/FNA
+	url = https://github.com/FNA-XNA/FNA
