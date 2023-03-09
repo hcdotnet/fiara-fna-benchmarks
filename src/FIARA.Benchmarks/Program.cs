@@ -81,6 +81,9 @@ internal static class Program {
 
     private static void WriteActionsFile() {
         var file = @"
+# This file is autogenerate. Please do not make changes to it manually. Instead,
+# make changes to the generator in `./src/FIARA.Benchmarks/Program.cs`! 
+
 name: Run, Store, and Publish Benchmarks
 on:
     push:
@@ -106,7 +109,7 @@ jobs:
 
         string storeResulting(string name) {
             return $@"
-            - name: Store Resulting Benchmarks
+            - name: Store Resulting Benchmarks (${name})
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
@@ -118,12 +121,12 @@ jobs:
                   comment-on-alert: true
                   fail-on-alert: true
                   alert-comment-cc-users: ""@steviegt6""
-".Trim();
+".TrimEnd();
         }
 
         string publishResulting(string name) {
             return $@"
-            - name: Publish Resulting Benchmarks
+            - name: Publish Resulting Benchmarks (${name})
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
@@ -136,16 +139,15 @@ jobs:
                   fail-on-alert: true
                   alert-comment-cc-users: ""@steviegt6""
                   gh-repository: ""github.com/hcdotnet/fiara-fna-benchmarks""
-".Trim();
+".TrimEnd();
         }
 
         var sb = new StringBuilder(file);
+        sb.AppendLine();
 
         foreach (var benchmark in benchmarks) {
             sb.AppendLine(storeResulting(benchmark));
-            sb.AppendLine();
             sb.AppendLine(publishResulting(benchmark));
-            sb.AppendLine();
         }
         
         var path = Path.Combine("..", ".github", "workflows", "benchmarks.yml");
