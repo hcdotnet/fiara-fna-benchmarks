@@ -133,7 +133,7 @@ jobs:
               with:
                   name: Benchmark.NET Benchmark
                   tool: ""benchmarkdotnet""
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/{name}-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/{name}.Combined.json
                   github-token: ${{{{ secrets.GITHUB_TOKEN }}}}
                   auto-push: true
                   alert-threshold: ""200%""
