@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>FIARA.Benchmarks.Substitutions.Vector2AddBenchmark-20230308-194049</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19045.2604/22H2/2022Update)
+AMD Ryzen 7 5700G with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
+.NET SDK=7.0.101
+  [Host]     : .NET 7.0.3 (7.0.323.6910), X64 RyuJIT AVX2
+  DefaultJob : .NET 7.0.3 (7.0.323.6910), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>         Method</th><th> Mean</th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>FnaVector2Add</td><td>4,438.6 ns</td><td>48.32 ns</td><td>45.20 ns</td>
+</tr><tr><td>SysVector2Add</td><td>511.3 ns</td><td>4.75 ns</td><td>4.21 ns</td>
+</tr><tr><td>FnaVector2AddNoInline</td><td>11,325.1 ns</td><td>120.68 ns</td><td>112.89 ns</td>
+</tr><tr><td>SysVector2AddNoInline</td><td>1,372.5 ns</td><td>19.15 ns</td><td>17.91 ns</td>
+</tr></tbody></table>
+</body>
+</html>

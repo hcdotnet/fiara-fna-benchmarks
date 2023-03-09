@@ -4,3 +4,6 @@ obj/
 .vs/
 .idea/
 .vscode/
+
+#src/BenchmarkDotNet.Artifacts/
+
