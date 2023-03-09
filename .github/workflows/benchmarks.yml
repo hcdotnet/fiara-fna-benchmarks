@@ -13,12 +13,10 @@ jobs:
         name: Run FIARA.Benchmarks
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout and Setup
             - uses: actions/checkout@v2
             - uses: actions/setup-dotnet@v1
               with:
                   dotnet-version: 7.0.x
-
             - name: Run Benchmarks
               run: cd src && dotnet run -c "Release" --project "FIARA.Benchmarks/FIARA.Benchmarks.csproj" --framework "net7.0" --filter "*" --exporters "json"
 
@@ -30,7 +28,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Store Resulting Benchmarks
-            - uses: rhysd/github-action-benchmark@v1
+              uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
@@ -43,7 +41,7 @@ jobs:
                   alert-comment-cc-users: "@steviegt6"
 
             - name: Publish Resulting Benchmarks
-            - uses: rhysd/github-action-benchmark@v1
+              uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
