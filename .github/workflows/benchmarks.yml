@@ -32,7 +32,7 @@ jobs:
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/${{ matrix.benchmarks }}-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
@@ -45,7 +45,7 @@ jobs:
               with:
                   name: Benchmark.NET Benchmark
                   tool: "benchmarkdotnet"
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/FIARA.Benchmarks-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/${{ matrix.benchmarks }}-report-full-compressed.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   auto-push: true
                   alert-threshold: "200%"
