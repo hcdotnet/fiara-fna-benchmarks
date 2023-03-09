@@ -109,12 +109,12 @@ jobs:
 
         string storeResulting(string name) {
             return $@"
-            - name: Store Resulting Benchmarks (${name})
+            - name: Store Resulting Benchmarks ({name})
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: ""benchmarkdotnet""
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/${name}-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/{name}-report-full-compressed.json
                   github-token: ${{{{ secrets.GITHUB_TOKEN }}}}
                   auto-push: true
                   alert-threshold: ""200%""
@@ -126,12 +126,12 @@ jobs:
 
         string publishResulting(string name) {
             return $@"
-            - name: Publish Resulting Benchmarks (${name})
+            - name: Publish Resulting Benchmarks ({name})
               uses: rhysd/github-action-benchmark@v1
               with:
                   name: Benchmark.NET Benchmark
                   tool: ""benchmarkdotnet""
-                  output-file-path: src/BenchmarkDotNet.Artifacts/results/${name}-report-full-compressed.json
+                  output-file-path: src/BenchmarkDotNet.Artifacts/results/{name}-report-full-compressed.json
                   github-token: ${{{{ secrets.GITHUB_TOKEN }}}}
                   auto-push: true
                   alert-threshold: ""200%""
